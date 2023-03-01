@@ -31,8 +31,11 @@ int main() {
     std::thread olivia(vegetable_chopper, "Olivia");
     std::thread barron(vegetable_chopper, "Barron");
 
-    printf("barron and olivia are chopping vegetables: \n");
+    printf("barron and olivia are chopping vegetables...\n");
     std::this_thread::sleep_for(std::chrono::seconds(1));
+    chopping = false;
+    barron.join();
+    olivia.join();
 
     while(true) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
